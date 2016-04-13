@@ -152,10 +152,12 @@ public class AppsFragment extends Fragment {
             for (int i = 0; i < entry.length(); i++) {
 
                 JSONObject forEntry = entry.optJSONObject(i);
-                // Get id Category
+                // Get id Category and Term
                 JSONObject categoryeObject = forEntry.getJSONObject(OWN_CATEGORY);
                 JSONObject attributeObject = categoryeObject.getJSONObject(OWN_ATTRIBUTE);
                 String id = attributeObject.getString(OWN_ID);
+                String term = attributeObject.getString(OWN_NEWS);
+
                 Log.v(TAG_PARSE,"el id de categoria es: "+ idCategory + " el id de json es: " + id);
                 //Get Name App
                 JSONObject nameObject = forEntry.getJSONObject("im:name");
@@ -179,6 +181,7 @@ public class AppsFragment extends Fragment {
                 {
                     Apps item = new Apps();
                     item.setCategoryId(id);
+                    item.setCategoryName(term);
                     item.setName(name);
                     item.setImageURL(urlImage);
                     item.setSummary(summary);

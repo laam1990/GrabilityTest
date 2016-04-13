@@ -12,6 +12,15 @@ public class Apps {
     private String currency;
     private String categoryId;
     private String artist;
+    private String categoryName;
+
+    public String getCategoryName() {
+        return categoryName;
+    }
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
+    }
 
     public String getArtist() {
         return artist;

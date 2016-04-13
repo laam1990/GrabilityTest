@@ -1,6 +1,10 @@
 package com.example.android.grabilitytest;
 
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -8,7 +12,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.BitmapImageViewTarget;
 
 import java.util.List;
 
@@ -76,10 +83,21 @@ public class MyRecyclerAdapterApps extends RecyclerView.Adapter<MyRecyclerAdapte
 
             nameApp.setText(item.getName());
 
-            Glide.with(context)
+            /*Glide.with(context)
                     .load(item.getImageURL()).asBitmap()
                     .centerCrop()
-                    .into(imageUrl);
+                    .into(imageUrl);*/
+
+            Glide.with(context).load(item.getImageURL()).asBitmap().centerCrop().into(new BitmapImageViewTarget(imageUrl) {
+                @Override
+                protected void setResource(Bitmap resource) {
+                    RoundedBitmapDrawable circularBitmapDrawable =
+                            RoundedBitmapDrawableFactory.create(context.getResources(), resource);
+                    circularBitmapDrawable.setCircular(true);
+                    imageUrl.setImageDrawable(circularBitmapDrawable);
+                }
+            });
+
             /*if(amountNumber!=0)
             amountNumber = amountNumber.parseLong(item.getAmount());
 
@@ -99,13 +117,16 @@ public class MyRecyclerAdapterApps extends RecyclerView.Adapter<MyRecyclerAdapte
         @Override
         public void onClick(View v) {
 
-
-            /*Intent intent = new Intent(context, Apps.class);
-            intent.putExtra("id", item.getId());
-            intent.putExtra("name",item.getTerm());
+            Intent intent = new Intent(context, DetailActivity.class);
+            intent.putExtra("id", item.getCategoryId());
+            intent.putExtra("nameCategory",item.getCategoryName());
+            intent.putExtra("nameApp", item.getName());
+            intent.putExtra("imageUrl",item.getImageURL());
+            intent.putExtra("summary",item.getSummary());
+            intent.putExtra("amount",item.getAmount());
+            intent.putExtra("currency",item.getCurrency());
+            intent.putExtra("artist",item.getArtist());
             context.startActivity(intent);
-
-            Toast.makeText(context, "El id es: " + item.getId(), Toast.LENGTH_LONG).show();*/
 
         }
     }
