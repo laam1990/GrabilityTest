@@ -19,7 +19,8 @@
             android:textSize="45sp"
             android:gravity="center_vertical|center"
             android:padding="20dp"
-            android:textColor="@color/textCard"/>
+            android:textColor="@color/textCard"
+            />
 
     </RelativeLayout>
     <LinearLayout
@@ -46,6 +47,7 @@
             android:id="@+id/imageUrl"
             android:layout_width="75dp"
             android:layout_height="75dp"
+            android:transitionName="@string/image_transition"
             />
 
         <LinearLayout
@@ -84,7 +86,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="0.0000"
-                    android:textColor="@color/textCard"/>
+                    android:textColor="@color/textCard"
+                    />
                 <TextView
                     android:layout_marginLeft="5dp"
                     android:id="@+id/currency"
@@ -92,7 +95,8 @@
                     android:layout_height="wrap_content"
                     android:text="USD"
                     android:textStyle="bold"
-                    android:textColor="@color/textCard"/>
+                    android:textColor="@color/textCard"
+                   />
 
             </LinearLayout>
 
@@ -113,7 +117,8 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
-        android:layout_marginTop="5dp">
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp">
 
         <TextView
             android:id="@+id/summary"

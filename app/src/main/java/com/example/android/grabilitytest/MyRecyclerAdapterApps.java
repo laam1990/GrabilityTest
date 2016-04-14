@@ -1,5 +1,6 @@
 package com.example.android.grabilitytest;
 
+import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -7,6 +8,7 @@ import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -126,7 +128,13 @@ public class MyRecyclerAdapterApps extends RecyclerView.Adapter<MyRecyclerAdapte
             intent.putExtra("amount",item.getAmount());
             intent.putExtra("currency",item.getCurrency());
             intent.putExtra("artist",item.getArtist());
-            context.startActivity(intent);
+
+            View sharedView = v;
+            String transitionImage = context.getResources().getString(R.string.image_transition);
+
+            ActivityOptions transitionActivityOptions = ActivityOptions.makeSceneTransitionAnimation(activity, sharedView,transitionImage);
+
+            context.startActivity(intent,transitionActivityOptions.toBundle());
 
         }
     }

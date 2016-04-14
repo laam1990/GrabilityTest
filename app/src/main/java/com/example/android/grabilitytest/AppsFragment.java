@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.transition.Fade;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -46,6 +47,7 @@ public class AppsFragment extends Fragment {
         super.onCreate(savedInstanceState);
         // Add this line in order for this fragment to handle menu events.
         setHasOptionsMenu(true);
+
     }
 
 
@@ -54,6 +56,7 @@ public class AppsFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment_apps, container, false);
+
 
         Bundle extras = getActivity().getIntent().getExtras();
         if(extras != null)
@@ -77,6 +80,12 @@ public class AppsFragment extends Fragment {
         new AsyncHttpTask().execute(url);
 
         return rootView;
+    }
+
+    private void setupWindowAnimations() {
+        Fade fade = new Fade();
+        fade.setDuration(1000);
+        getActivity().getWindow().setEnterTransition(fade);
     }
 
 
@@ -125,6 +134,7 @@ public class AppsFragment extends Fragment {
             if (result == 1) {
                 adapter = new MyRecyclerAdapterApps(getActivity(), appList);
                 mRecyclerView.setAdapter(adapter);
+                setupWindowAnimations();
             } else {
                 Toast.makeText(getActivity(), "Failed to fetch data!", Toast.LENGTH_SHORT).show();
             }

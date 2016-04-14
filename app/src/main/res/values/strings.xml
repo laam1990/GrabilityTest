@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">GrabilityTest</string>
+    <string name="category_transition_name">category</string>
+    <string name="apps_transition_name">apps</string>
+    <string name="image_transition">image</string>
+    <string name="amount_transition">amount</string>
+    <string name="currency_transition">currency</string>
 </resources>

@@ -1,11 +1,15 @@
 package com.example.android.grabilitytest;
 
+import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -18,6 +22,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.BitmapImageViewTarget;
 
 import java.util.List;
 
@@ -55,6 +60,7 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.Cu
 
     public class CustomViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
+        protected String completeUrl;
         protected TextView textView;
         protected RelativeLayout layout;
         protected MainActivity activity;
@@ -82,75 +88,123 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.Cu
 
             textView.setText(item.getTerm());
 
+            String baseUrl = "http://i.imgur.com/";
+            String books = "f6h8wRC.jpg";
+            String games = "eX4etK2.jpg";
+            String business = "tYsxuug.jpg";
+            String catalogs = "rqnqprW.jpg";
+            String education = "dPPYKsC.png";
+            String entertainment = "FtIWAS2.jpg";
+            String finance = "YQwSQQZ.png";
+            String foodrink = "MczMKCH.jpg";
+            String healthfitness = "P7gQ3Ck.jpg";
+            String lifestyle = "0hMcsjC.jpg";
+            String medical = "SXw2nrg.png";
+            String music = "1dgqDcd.jpg";
+            String navigation = "BuNFS3l.jpg";
+            String news = "6uutFPw.jpg";
+            String newsstand = "znRq2du.jpg";
+            String photovideo = "xS4lrq1.jpg";
+            String productivity = "on2KJQO.jpg";
+            String reference = "UtOPvRH.jpg";
+            String socialnetworking = "AjmjuWH.jpg";
+            String sports = "LblJ0fA.jpg";
+            String travel = "6KjlGve.jpg";
+            String utilities = "SNDXMbL.png";
+            String weather = "RT8jZKg.png";
+
             switch (item.getTerm()){
                 case "Games":
-                    imageView.setBackground(context.getResources().getDrawable(R.drawable.games));
+                    LoadImage(baseUrl,games,imageView);
+                    completeUrl = baseUrl+games;
                     break;
                 case "Books":
-                    imageView.setBackground(context.getResources().getDrawable(R.drawable.books));
+                    LoadImage(baseUrl, books, imageView);
+                    completeUrl = baseUrl+books;
                     break;
                 case "Business":
-                    imageView.setBackground(context.getResources().getDrawable(R.drawable.business));
+                    LoadImage(baseUrl, business, imageView);
+                    completeUrl = baseUrl+business;
                     break;
                 case "Catalogs":
-                    imageView.setBackground(context.getResources().getDrawable(R.drawable.catalog));
+                    LoadImage(baseUrl, catalogs, imageView);
+                    completeUrl = baseUrl+catalogs;
                     break;
                 case "Education":
-                    imageView.setBackground(context.getResources().getDrawable(R.drawable.education));
+                    LoadImage(baseUrl, education, imageView);
+                    completeUrl = baseUrl+education;
                     break;
                 case "Entertainment":
-                    imageView.setBackground(context.getResources().getDrawable(R.drawable.enterteiment));
+                    LoadImage(baseUrl, entertainment, imageView);
+                    completeUrl = baseUrl+entertainment;
                     break;
                 case "Finance":
-                    imageView.setBackground(context.getResources().getDrawable(R.drawable.finance));
+                    LoadImage(baseUrl, finance, imageView);
+                    completeUrl = baseUrl+finance;
                     break;
                 case "Food & Drink":
-                    imageView.setBackground(context.getResources().getDrawable(R.drawable.fooddrink));
+                    LoadImage(baseUrl, foodrink, imageView);
+                    completeUrl = baseUrl+foodrink;
                     break;
                 case "Health & Fitness":
-                    imageView.setBackground(context.getResources().getDrawable(R.drawable.healthfitness));
+                    LoadImage(baseUrl, healthfitness, imageView);
+                    completeUrl = baseUrl+healthfitness;
                     break;
                 case "Lifestyle":
-                    imageView.setBackground(context.getResources().getDrawable(R.drawable.lifestyle));
+                    LoadImage(baseUrl, lifestyle, imageView);
+                    completeUrl = baseUrl+lifestyle;
                     break;
                 case "Medical":
-                    imageView.setBackground(context.getResources().getDrawable(R.drawable.medical));
+                    LoadImage(baseUrl, medical, imageView);
+                    completeUrl = baseUrl+medical;
                     break;
                 case "Music":
-                    imageView.setBackground(context.getResources().getDrawable(R.drawable.music));
+                    LoadImage(baseUrl, music, imageView);
+                    completeUrl = baseUrl+music;
                     break;
                 case "Navigation":
-                    imageView.setBackground(context.getResources().getDrawable(R.drawable.navigation));
+                    LoadImage(baseUrl, navigation, imageView);
+                    completeUrl = baseUrl+navigation;
                     break;
                 case "News":
-                    imageView.setBackground(context.getResources().getDrawable(R.drawable.news));
+                    LoadImage(baseUrl, news, imageView);
+                    completeUrl = baseUrl+news;
                     break;
                 case "Newsstand":
-                    imageView.setBackground(context.getResources().getDrawable(R.drawable.newsstand));
+                    LoadImage(baseUrl, newsstand, imageView);
+                    completeUrl = baseUrl+newsstand;
                     break;
                 case "Photo & Video":
-                    imageView.setBackground(context.getResources().getDrawable(R.drawable.photovideo));
+                    LoadImage(baseUrl, photovideo, imageView);
+                    completeUrl = baseUrl+photovideo;
                     break;
                 case "Productivity":
-                    imageView.setBackground(context.getResources().getDrawable(R.drawable.productivity));
+                    LoadImage(baseUrl, productivity, imageView);
+                    completeUrl = baseUrl+productivity;
                     break;
                 case "Reference":
-                    imageView.setBackground(context.getResources().getDrawable(R.drawable.reference));
+                    LoadImage(baseUrl, reference, imageView);
+                    completeUrl = baseUrl+reference;
                     break;
                 case "Social Networking":
-                    imageView.setBackground(context.getResources().getDrawable(R.drawable.socialnetwork));
+                    LoadImage(baseUrl, socialnetworking, imageView);
+                    completeUrl = baseUrl+socialnetworking;
                     break;
                 case "Sports":
-                    imageView.setBackground(context.getResources().getDrawable(R.drawable.sports));
+                    LoadImage(baseUrl, sports, imageView);
+                    completeUrl = baseUrl+sports;
                     break;
                 case "Travel":
-                    imageView.setBackground(context.getResources().getDrawable(R.drawable.travel));
+                    LoadImage(baseUrl, travel, imageView);
+                    completeUrl = baseUrl+travel;
                     break;
                 case "Utilities":
-                    imageView.setBackground(context.getResources().getDrawable(R.drawable.utilities));
+                    LoadImage(baseUrl, utilities, imageView);
+                    completeUrl = baseUrl+utilities;
                     break;
                 case "Weather":
-                    imageView.setBackground(context.getResources().getDrawable(R.drawable.weather));
+                    LoadImage(baseUrl, weather, imageView);
+                    completeUrl = baseUrl+weather;
                     break;
 
             }
@@ -164,11 +218,29 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.Cu
             Intent intent = new Intent(context, AppsActivity.class);
             intent.putExtra("id", item.getId());
             intent.putExtra("name",item.getTerm());
-            context.startActivity(intent);
+            intent.putExtra("urlHeader", completeUrl);
 
-            Toast.makeText(context,"El id es: "+item.getId(),Toast.LENGTH_LONG).show();
+            View sharedView = v;
+            String transitionName = context.getResources().getString(R.string.category_transition_name);
 
+            ActivityOptions transitionActivityOptions = ActivityOptions.makeSceneTransitionAnimation(activity, sharedView, transitionName);
 
+            context.startActivity(intent, transitionActivityOptions.toBundle());
+
+        }
+
+        public void LoadImage(String baseUrl, String categoryUrl, final ImageView image) {
+            String completeUrl = baseUrl + categoryUrl;
+
+            Glide.with(context).load(completeUrl).asBitmap().centerCrop().into(new BitmapImageViewTarget(image) {
+                @Override
+                protected void setResource(Bitmap resource) {
+                    RoundedBitmapDrawable circularBitmapDrawable =
+                            RoundedBitmapDrawableFactory.create(context.getResources(), resource);
+                    circularBitmapDrawable.setCircular(true);
+                    image.setImageDrawable(circularBitmapDrawable);
+                }
+            });
         }
     }
 

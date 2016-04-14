@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.transition.Slide;
+import android.transition.TransitionInflater;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -54,6 +55,7 @@ public class CategoryFragment extends Fragment {
         super.onCreate(savedInstanceState);
         // Add this line in order for this fragment to handle menu events.
         setHasOptionsMenu(true);
+
     }
 
 
@@ -62,6 +64,8 @@ public class CategoryFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
+
+
 
         // Initialize recycler view
         mRecyclerView = (RecyclerView) rootView.findViewById(R.id.recycler_view);
@@ -76,6 +80,12 @@ public class CategoryFragment extends Fragment {
         new AsyncHttpTask().execute(url);
 
         return rootView;
+    }
+
+    private void setupWindowAnimations() {
+        Slide slide = new Slide();
+        slide.setDuration(1000);
+        getActivity().getWindow().setExitTransition(slide);
     }
 
 
@@ -124,6 +134,7 @@ public class CategoryFragment extends Fragment {
             if (result == 1) {
                 adapter = new MyRecyclerAdapter(getActivity(), categoryList);
                 mRecyclerView.setAdapter(adapter);
+                setupWindowAnimations();
             } else {
                 Toast.makeText(getActivity(), "Failed to fetch data!", Toast.LENGTH_SHORT).show();
             }

@@ -19,7 +19,8 @@
             android:textSize="45sp"
             android:gravity="center_vertical|center"
             android:padding="20dp"
-            android:textColor="@color/textCard"/>
+            android:textColor="@color/textCard"
+            android:transitionName="@string/category_transition_name"/>/>
 
     </RelativeLayout>
 
