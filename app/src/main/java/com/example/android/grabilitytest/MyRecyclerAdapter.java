@@ -59,6 +59,7 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.Cu
         protected RelativeLayout layout;
         protected MainActivity activity;
         protected CardView card;
+        protected ImageView imageView;
 
         private Category item;
 
@@ -68,7 +69,7 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.Cu
             view.setOnClickListener(this);
 
             this.textView = (TextView) view.findViewById(R.id.categoryText);
-
+            this.imageView = (ImageView) view.findViewById(R.id.imageCategory);
             this.card = (CardView)view.findViewById(R.id.cardViewCategory);
         }
 
@@ -80,6 +81,79 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.Cu
             this.activity = activity;
 
             textView.setText(item.getTerm());
+
+            switch (item.getTerm()){
+                case "Games":
+                    imageView.setBackground(context.getResources().getDrawable(R.drawable.games));
+                    break;
+                case "Books":
+                    imageView.setBackground(context.getResources().getDrawable(R.drawable.books));
+                    break;
+                case "Business":
+                    imageView.setBackground(context.getResources().getDrawable(R.drawable.business));
+                    break;
+                case "Catalogs":
+                    imageView.setBackground(context.getResources().getDrawable(R.drawable.catalog));
+                    break;
+                case "Education":
+                    imageView.setBackground(context.getResources().getDrawable(R.drawable.education));
+                    break;
+                case "Entertainment":
+                    imageView.setBackground(context.getResources().getDrawable(R.drawable.enterteiment));
+                    break;
+                case "Finance":
+                    imageView.setBackground(context.getResources().getDrawable(R.drawable.finance));
+                    break;
+                case "Food & Drink":
+                    imageView.setBackground(context.getResources().getDrawable(R.drawable.fooddrink));
+                    break;
+                case "Health & Fitness":
+                    imageView.setBackground(context.getResources().getDrawable(R.drawable.healthfitness));
+                    break;
+                case "Lifestyle":
+                    imageView.setBackground(context.getResources().getDrawable(R.drawable.lifestyle));
+                    break;
+                case "Medical":
+                    imageView.setBackground(context.getResources().getDrawable(R.drawable.medical));
+                    break;
+                case "Music":
+                    imageView.setBackground(context.getResources().getDrawable(R.drawable.music));
+                    break;
+                case "Navigation":
+                    imageView.setBackground(context.getResources().getDrawable(R.drawable.navigation));
+                    break;
+                case "News":
+                    imageView.setBackground(context.getResources().getDrawable(R.drawable.news));
+                    break;
+                case "Newsstand":
+                    imageView.setBackground(context.getResources().getDrawable(R.drawable.newsstand));
+                    break;
+                case "Photo & Video":
+                    imageView.setBackground(context.getResources().getDrawable(R.drawable.photovideo));
+                    break;
+                case "Productivity":
+                    imageView.setBackground(context.getResources().getDrawable(R.drawable.productivity));
+                    break;
+                case "Reference":
+                    imageView.setBackground(context.getResources().getDrawable(R.drawable.reference));
+                    break;
+                case "Social Networking":
+                    imageView.setBackground(context.getResources().getDrawable(R.drawable.socialnetwork));
+                    break;
+                case "Sports":
+                    imageView.setBackground(context.getResources().getDrawable(R.drawable.sports));
+                    break;
+                case "Travel":
+                    imageView.setBackground(context.getResources().getDrawable(R.drawable.travel));
+                    break;
+                case "Utilities":
+                    imageView.setBackground(context.getResources().getDrawable(R.drawable.utilities));
+                    break;
+                case "Weather":
+                    imageView.setBackground(context.getResources().getDrawable(R.drawable.weather));
+                    break;
+
+            }
 
         }
 
